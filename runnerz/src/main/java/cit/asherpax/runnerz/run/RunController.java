@@ -41,7 +41,7 @@ public class RunController {
         // This method handles GET requests to "/api/runs/{id}" and returns the Run object with the specified id.
         Optional<Run> run = runRepository.findById(id);
         if(run.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Run not found");
+            throw new RunNotFoundException();
         }
         return run.get();
     }
@@ -63,7 +63,7 @@ public class RunController {
 
 
     //delete
-    @PutMapping("/{id}")
+    @DeleteMapping("/{id}")
     void delete(@PathVariable Integer id){
         runRepository.delete(id);
     }
