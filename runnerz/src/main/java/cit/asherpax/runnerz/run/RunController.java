@@ -37,14 +37,15 @@ public class RunController {
     // @PathVariable annotation indicates that a method parameter should be bound to a URI template variable.
     // The {id} part of the URI is bound to the id parameter of the method.
     @GetMapping("/{id}")
-    Run findById(@PathVariable Integer id){
+    Run findById(@PathVariable Integer id) {
         // This method handles GET requests to "/api/runs/{id}" and returns the Run object with the specified id.
         Optional<Run> run = runRepository.findById(id);
-        if(run.isEmpty()){
+        if (run.isEmpty()) {
             throw new RunNotFoundException();
         }
         return run.get();
     }
+
 
     //post
     @ResponseStatus(HttpStatus.CREATED)

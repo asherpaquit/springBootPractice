@@ -35,7 +35,6 @@ public class RunRepository {
             runs.set(runs.indexOf(existingRun.get()),run);
         }
     }
-
     void delete(Integer id){
         runs.removeIf(run->run.id().equals(id));
     }
