@@ -1,5 +1,6 @@
-package com.g1.appdev.francis_and_friends.entity;
+package com.g1.appdev.francis_and_friends.student;
 
+import com.g1.appdev.francis_and_friends.project.ProjectEntity;
 import jakarta.persistence.*;
 import java.util.List;
 

@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 public class ProjectDetailsRepository {
-    private List<ProjectDetails> proDe= new ArrayList<>();
+    private List<ProjectEntity> proDe= new ArrayList<>();
 
     Optional<ProjectDetails> findById(Integer projectId){
         return proDe.stream()
