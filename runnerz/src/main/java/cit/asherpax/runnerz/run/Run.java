@@ -21,8 +21,11 @@ public record Run (
 )
 {
     public Run{
-        if(!completedOn.isAfter(startedOn())){
-            throw new IllegalArgumentException("Completed On Must be after Started On");
+        Objects.requireNonNull(startedOn, "Started On cannot be null");
+        Objects.requireNonNull(completedOn, "Completed On cannot be null");
+
+        if (!completedOn.isAfter(startedOn)) {
+            throw new IllegalArgumentException("Completed On must be after Started On");
         }
     }
 }

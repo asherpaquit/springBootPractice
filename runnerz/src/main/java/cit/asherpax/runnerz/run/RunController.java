@@ -1,5 +1,6 @@
 package cit.asherpax.runnerz.run;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.*;
@@ -47,10 +48,10 @@ public class RunController {
     }
 
 
-    //post
+    //post // using validate to validate what data type is to be accepted
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
-    void create(@RequestBody Run run){
+    void create(@Valid @RequestBody Run run){
         runRepository.create(run);
     }
 
@@ -58,7 +59,7 @@ public class RunController {
     //put
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
-    void update(@RequestBody Run run, @PathVariable Integer id){
+    void update(@Valid @RequestBody Run run, @PathVariable Integer id){
         runRepository.update(run,id);
     }
 
