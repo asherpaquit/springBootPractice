@@ -1,34 +1,21 @@
-package com.g1.appdev.francis_and_friends.student;
+package com.g1.appdev.francis_and_friends.dto;
 
-import com.g1.appdev.francis_and_friends.project.ProjectEntity;
-import jakarta.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name="studentDb")
-public class StudentEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class StudentProjectDTO {
     private Integer studentID;
-
-    @Column(nullable = false)
     private String studentFirstName;
-
-    @Column(nullable = false)
     private String studentLastName;
-
-    @Column(nullable = false, unique = true)
     private String email;
+    private List<ProjectDetailsDTO> projects;
 
-    public StudentEntity(){
-        super();
-    }
 
-    public StudentEntity(Integer studentID, String studentFirstName, String studentLastName, String email) {
+    public StudentProjectDTO(Integer studentID, String studentFirstName, String studentLastName, String email, List<ProjectDetailsDTO> projects) {
         this.studentID = studentID;
         this.studentFirstName = studentFirstName;
         this.studentLastName = studentLastName;
         this.email = email;
+        this.projects = projects;
     }
 
     public Integer getStudentID() {
@@ -63,6 +50,11 @@ public class StudentEntity {
         this.email = email;
     }
 
-    @OneToMany(mappedBy = "student")
-    private List<ProjectEntity> courses; // Changed to List<ProjectEntity>
+    public List<ProjectDetailsDTO> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<ProjectDetailsDTO> projects) {
+        this.projects = projects;
+    }
 }
